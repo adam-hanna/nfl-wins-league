@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Wins League 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NFL Wins League 2025</h1>
+            <p class="subtitle">Track the cumulative wins for each player's three teams</p>
+            <div id="last-updated" class="last-updated"></div>
+        </header>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading NFL data...</p>
+        </div>
+        
+        <div class="table-container" id="table-container" style="display: none;">
+            <table id="wins-table">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Team</th>
+                        <th>Wins</th>
+                        <th>Total Wins</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="error" id="error" style="display: none;">
+            <p>Error loading NFL data. Please try refreshing the page.</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
