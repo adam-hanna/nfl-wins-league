@@ -2,11 +2,11 @@
   "name": "nfl-wins-league",
   "version": "1.0.0",
   "description": "A static web page to track NFL wins league progress",
-  "main": "src/index.html",
+  "main": "index.html",
   "scripts": {
-    "start": "python3 -m http.server 3000 --directory src",
-    "dev": "python3 -m http.server 3000 --directory src",
-    "serve": "python3 -m http.server 3000 --directory src"
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000",
+    "serve": "python3 -m http.server 3000"
   },
   "keywords": [
     "nfl",

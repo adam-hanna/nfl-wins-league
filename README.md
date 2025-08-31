@@ -35,9 +35,9 @@ This site is designed to work perfectly with GitHub Pages:
 
 ## Files
 
-- `src/index.html` - Main HTML structure
-- `src/styles.css` - CSS styling and responsive design
-- `src/script.js` - JavaScript for fetching NFL data and table functionality
+- `index.html` - Main HTML structure
+- `styles.css` - CSS styling and responsive design
+- `script.js` - JavaScript for fetching NFL data and table functionality
 - `package.json` - Node.js package configuration with run scripts
 - `README.md` - This documentation
 
@@ -76,8 +76,8 @@ npm run dev
 
 Alternative manual method:
 ```bash
-# Start a local server from src directory
-python3 -m http.server 8000 --directory src
+# Start a local server from root directory
+python3 -m http.server 3000
 ```
 
 ## Updates
