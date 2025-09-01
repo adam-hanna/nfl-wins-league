@@ -121,30 +121,72 @@ let teamRecords = {};
 // Fetch team records from ESPN API
 async function fetchTeamRecords() {
     try {
-        // Get all teams data first
+        // First get team basic info (logos, etc.)
         const teamsResponse = await fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams');
         const teamsData = await teamsResponse.json();
         
-        // Extract team records from the teams data
+        // Create a map of team info
+        const teamInfo = {};
         for (const team of teamsData.sports[0].leagues[0].teams) {
             const teamName = `${team.team.location} ${team.team.name}`;
-            const record = team.team.record?.items?.find(item => item.type === 'total');
-            
-            if (record) {
-                teamRecords[teamName] = {
-                    wins: parseInt(record.stats?.find(stat => stat.name === 'wins')?.value || 0),
-                    losses: parseInt(record.stats?.find(stat => stat.name === 'losses')?.value || 0),
-                    logo: team.team.logos?.[0]?.href || ''
-                };
-            } else {
-                // Fallback: assume 0 wins if no record found (early season)
-                teamRecords[teamName] = {
+            teamInfo[teamName] = {
+                id: team.team.id,
+                logo: team.team.logos?.[0]?.href || ''
+            };
+        }
+        
+        // Now fetch records for each team using the correct ESPN API
+        const recordPromises = Object.entries(teamMapping).map(async ([teamName, teamData]) => {
+            try {
+                const recordResponse = await fetch(
+                    `https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/teams/${teamData.id}/record`
+                );
+                const recordData = await recordResponse.json();
+                
+                // Find the total season record
+                const totalRecord = recordData.items?.find(item => item.type === 'total');
+                
+                if (totalRecord) {
+                    const wins = totalRecord.stats?.find(stat => stat.name === 'wins')?.value || 0;
+                    const losses = totalRecord.stats?.find(stat => stat.name === 'losses')?.value || 0;
+                    
+                    return {
+                        teamName,
+                        wins: parseInt(wins),
+                        losses: parseInt(losses),
+                        logo: teamInfo[teamName]?.logo || ''
+                    };
+                } else {
+                    // Fallback for early season
+                    return {
+                        teamName,
+                        wins: 0,
+                        losses: 0,
+                        logo: teamInfo[teamName]?.logo || ''
+                    };
+                }
+            } catch (error) {
+                console.error(`Error fetching record for ${teamName}:`, error);
+                return {
+                    teamName,
                     wins: 0,
                     losses: 0,
-                    logo: team.team.logos?.[0]?.href || ''
+                    logo: teamInfo[teamName]?.logo || ''
                 };
             }
-        }
+        });
+        
+        // Wait for all record requests to complete
+        const records = await Promise.all(recordPromises);
+        
+        // Build the teamRecords object
+        records.forEach(record => {
+            teamRecords[record.teamName] = {
+                wins: record.wins,
+                losses: record.losses,
+                logo: record.logo
+            };
+        });
         
         return teamRecords;
     } catch (error) {
