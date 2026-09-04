@@ -1,4 +1,4 @@
-# NFL Wins League 2025
+# NFL Wins League 2026
 
 A static web page to track the progress of an NFL wins league where each player chose three teams. The player with the most cumulative wins at the end of the season wins.
 
@@ -16,7 +16,7 @@ A static web page to track the progress of an NFL wins league where each player 
 |--------|-------|
 | Beau Chadwick | Buffalo Bills, Las Vegas Raiders, Tennessee Titans |
 | Alex Lanser | Philadelphia Eagles, Miami Dolphins, New York Jets |
-| Daniel Maloney | Baltimore Ravens, Atlanta Falcons, New York Giants |
+| Kevin Ribbens | Baltimore Ravens, Atlanta Falcons, New York Giants |
 | Adam Hanna | Kansas City Chiefs, Pittsburgh Steelers, Arizona Cardinals |
 | Kevin Strahley | San Francisco 49ers, Los Angeles Chargers, New England Patriots |
 | David Ribbens | Detroit Lions, Houston Texans, Chicago Bears |
@@ -31,7 +31,7 @@ This site is designed to work perfectly with GitHub Pages:
 
 1. **Push to Repository**: Upload all files to your GitHub repository
 2. **Enable GitHub Pages**: Go to Settings → Pages → Source: Deploy from a branch → Select `main` branch
-3. **Access Your Site**: Your site will be available at `https://yourusername.github.io/repository-name`
+3. **Access Your Site**: Your site will be available at `https://adam-hanna.github.io/nfl-wins-league/`
 
 ## Files
 

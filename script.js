@@ -17,7 +17,7 @@ const playersData = [
         ]
     },
     {
-        name: "Daniel Maloney",
+        name: "Kevin Ribbens",
         teams: [
             { city: "Baltimore", name: "Ravens" },
             { city: "Atlanta", name: "Falcons" },
@@ -113,7 +113,9 @@ const teamMapping = {
     "Indianapolis Colts": { id: 11, abbreviation: "IND" },
     "Cincinnati Bengals": { id: 4, abbreviation: "CIN" },
     "Minnesota Vikings": { id: 16, abbreviation: "MIN" },
-    "Jacksonville Jaguars": { id: 30, abbreviation: "JAX" }
+    "Jacksonville Jaguars": { id: 30, abbreviation: "JAX" },
+    "Cleveland Browns": { id: 5, abbreviation: "CLE" },
+    "New Orleans Saints": { id: 18, abbreviation: "NO" }
 };
 
 let teamRecords = {};
