@@ -12,18 +12,20 @@ A static web page to track the progress of an NFL wins league where each player 
 
 ## Players and Teams
 
+Drafted 2026-09-02 to 09-07, in draft order. The Arizona Cardinals and Miami Dolphins went undrafted.
+
 | Player | Teams |
 |--------|-------|
-| Beau Chadwick | Buffalo Bills, Las Vegas Raiders, Tennessee Titans |
-| Alex Lanser | Philadelphia Eagles, Miami Dolphins, New York Jets |
-| Kevin Ribbens | Baltimore Ravens, Atlanta Falcons, New York Giants |
-| Adam Hanna | Kansas City Chiefs, Pittsburgh Steelers, Arizona Cardinals |
-| Kevin Strahley | San Francisco 49ers, Los Angeles Chargers, New England Patriots |
-| David Ribbens | Detroit Lions, Houston Texans, Chicago Bears |
-| Kyle Remley | Washington Commanders, Los Angeles Rams, Carolina Panthers |
-| Dustin Delpizzo | Denver Broncos, Dallas Cowboys, Seattle Seahawks |
-| Ramsey Davis | Tampa Bay Buccaneers, Green Bay Packers, Indianapolis Colts |
-| Kirk | Cincinnati Bengals, Minnesota Vikings, Jacksonville Jaguars |
+| Dustin Delpizzo | Los Angeles Rams, Dallas Cowboys, Atlanta Falcons |
+| Kevin Ribbens | Baltimore Ravens, Tampa Bay Buccaneers, New York Jets |
+| Kevin Strahley | Buffalo Bills, Los Angeles Chargers, Las Vegas Raiders |
+| Alex Lanser | Seattle Seahawks, Indianapolis Colts, Carolina Panthers |
+| David Ribbens | Detroit Lions, Jacksonville Jaguars, Tennessee Titans |
+| Ramsey Davis | New England Patriots, Minnesota Vikings, Pittsburgh Steelers |
+| Kyle Remley | Denver Broncos, Cincinnati Bengals, Cleveland Browns |
+| Kirk | Houston Texans, Chicago Bears, New Orleans Saints |
+| Beau Chadwick | Philadelphia Eagles, Green Bay Packers, Washington Commanders |
+| Adam Hanna | Kansas City Chiefs, San Francisco 49ers, New York Giants |
 
 ## GitHub Pages Deployment
 

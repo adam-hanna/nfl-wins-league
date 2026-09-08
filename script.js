@@ -1,83 +1,83 @@
-// Player data with their teams
+// Player data with their teams, in draft order (2026 season)
 const playersData = [
     {
-        name: "Beau Chadwick",
+        name: "Dustin Delpizzo",
         teams: [
-            { city: "Buffalo", name: "Bills" },
-            { city: "Las Vegas", name: "Raiders" },
-            { city: "Tennessee", name: "Titans" }
-        ]
-    },
-    {
-        name: "Alex Lanser",
-        teams: [
-            { city: "Philadelphia", name: "Eagles" },
-            { city: "Miami", name: "Dolphins" },
-            { city: "New York", name: "Jets" }
+            { city: "Los Angeles", name: "Rams" },
+            { city: "Dallas", name: "Cowboys" },
+            { city: "Atlanta", name: "Falcons" }
         ]
     },
     {
         name: "Kevin Ribbens",
         teams: [
             { city: "Baltimore", name: "Ravens" },
-            { city: "Atlanta", name: "Falcons" },
-            { city: "New York", name: "Giants" }
-        ]
-    },
-    {
-        name: "Adam Hanna",
-        teams: [
-            { city: "Kansas City", name: "Chiefs" },
-            { city: "Pittsburgh", name: "Steelers" },
-            { city: "Arizona", name: "Cardinals" }
+            { city: "Tampa Bay", name: "Buccaneers" },
+            { city: "New York", name: "Jets" }
         ]
     },
     {
         name: "Kevin Strahley",
         teams: [
-            { city: "San Francisco", name: "49ers" },
+            { city: "Buffalo", name: "Bills" },
             { city: "Los Angeles", name: "Chargers" },
-            { city: "New England", name: "Patriots" }
+            { city: "Las Vegas", name: "Raiders" }
+        ]
+    },
+    {
+        name: "Alex Lanser",
+        teams: [
+            { city: "Seattle", name: "Seahawks" },
+            { city: "Indianapolis", name: "Colts" },
+            { city: "Carolina", name: "Panthers" }
         ]
     },
     {
         name: "David Ribbens",
         teams: [
             { city: "Detroit", name: "Lions" },
-            { city: "Houston", name: "Texans" },
-            { city: "Chicago", name: "Bears" }
-        ]
-    },
-    {
-        name: "Kyle Remley",
-        teams: [
-            { city: "Washington", name: "Commanders" },
-            { city: "Los Angeles", name: "Rams" },
-            { city: "Carolina", name: "Panthers" }
-        ]
-    },
-    {
-        name: "Dustin Delpizzo",
-        teams: [
-            { city: "Denver", name: "Broncos" },
-            { city: "Dallas", name: "Cowboys" },
-            { city: "Seattle", name: "Seahawks" }
+            { city: "Jacksonville", name: "Jaguars" },
+            { city: "Tennessee", name: "Titans" }
         ]
     },
     {
         name: "Ramsey Davis",
         teams: [
-            { city: "Tampa Bay", name: "Buccaneers" },
-            { city: "Green Bay", name: "Packers" },
-            { city: "Indianapolis", name: "Colts" }
+            { city: "New England", name: "Patriots" },
+            { city: "Minnesota", name: "Vikings" },
+            { city: "Pittsburgh", name: "Steelers" }
+        ]
+    },
+    {
+        name: "Kyle Remley",
+        teams: [
+            { city: "Denver", name: "Broncos" },
+            { city: "Cincinnati", name: "Bengals" },
+            { city: "Cleveland", name: "Browns" }
         ]
     },
     {
         name: "Kirk",
         teams: [
-            { city: "Cincinnati", name: "Bengals" },
-            { city: "Minnesota", name: "Vikings" },
-            { city: "Jacksonville", name: "Jaguars" }
+            { city: "Houston", name: "Texans" },
+            { city: "Chicago", name: "Bears" },
+            { city: "New Orleans", name: "Saints" }
+        ]
+    },
+    {
+        name: "Beau Chadwick",
+        teams: [
+            { city: "Philadelphia", name: "Eagles" },
+            { city: "Green Bay", name: "Packers" },
+            { city: "Washington", name: "Commanders" }
+        ]
+    },
+    {
+        name: "Adam Hanna",
+        teams: [
+            { city: "Kansas City", name: "Chiefs" },
+            { city: "San Francisco", name: "49ers" },
+            { city: "New York", name: "Giants" }
         ]
     }
 ];
@@ -141,7 +141,7 @@ async function fetchTeamRecords() {
         const recordPromises = Object.entries(teamMapping).map(async ([teamName, teamData]) => {
             try {
                 const recordResponse = await fetch(
-                    `https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/teams/${teamData.id}/record`
+                    `https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2026/types/2/teams/${teamData.id}/record`
                 );
                 const recordData = await recordResponse.json();
                 
