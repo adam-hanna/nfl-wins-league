@@ -123,22 +123,12 @@ let teamRecords = {};
 // Fetch team records from ESPN API
 async function fetchTeamRecords() {
     try {
-        // First get team basic info (logos, etc.)
-        const teamsResponse = await fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams');
-        const teamsData = await teamsResponse.json();
-        
-        // Create a map of team info
-        const teamInfo = {};
-        for (const team of teamsData.sports[0].leagues[0].teams) {
-            const teamName = `${team.team.location} ${team.team.name}`;
-            teamInfo[teamName] = {
-                id: team.team.id,
-                logo: team.team.logos?.[0]?.href || ''
-            };
-        }
-        
-        // Now fetch records for each team using the correct ESPN API
+        // Fetch records for each team using the correct ESPN API
         const recordPromises = Object.entries(teamMapping).map(async ([teamName, teamData]) => {
+            // Logos are plain images on ESPN's CDN, so they need no CORS header.
+            // Don't source them from site.api.espn.com/.../nfl/teams: that endpoint
+            // stopped sending Access-Control-Allow-Origin, and the browser blocks it.
+            const logo = `https://a.espncdn.com/i/teamlogos/nfl/500/${teamData.abbreviation.toLowerCase()}.png`;
             try {
                 const recordResponse = await fetch(
                     `https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2026/types/2/teams/${teamData.id}/record`
@@ -156,7 +146,7 @@ async function fetchTeamRecords() {
                         teamName,
                         wins: parseInt(wins),
                         losses: parseInt(losses),
-                        logo: teamInfo[teamName]?.logo || ''
+                        logo
                     };
                 } else {
                     // Fallback for early season
@@ -164,7 +154,7 @@ async function fetchTeamRecords() {
                         teamName,
                         wins: 0,
                         losses: 0,
-                        logo: teamInfo[teamName]?.logo || ''
+                        logo
                     };
                 }
             } catch (error) {
@@ -173,7 +163,7 @@ async function fetchTeamRecords() {
                     teamName,
                     wins: 0,
                     losses: 0,
-                    logo: teamInfo[teamName]?.logo || ''
+                    logo
                 };
             }
         });
@@ -193,24 +183,8 @@ async function fetchTeamRecords() {
         return teamRecords;
     } catch (error) {
         console.error('Error fetching team records:', error);
-        // Fallback data for testing
-        return createFallbackData();
+        return teamRecords;
     }
-}
-
-// Create fallback data for testing/development
-function createFallbackData() {
-    const fallbackRecords = {};
-    
-    Object.keys(teamMapping).forEach(teamName => {
-        fallbackRecords[teamName] = {
-            wins: Math.floor(Math.random() * 12), // Random wins for demo
-            losses: Math.floor(Math.random() * 12),
-            logo: ''
-        };
-    });
-    
-    return fallbackRecords;
 }
 
 // Calculate player totals and sort
